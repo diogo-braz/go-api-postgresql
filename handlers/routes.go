@@ -105,3 +105,13 @@ func DeleteTodo(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(resp)
 }
+
+func ListTodos(w http.ResponseWriter, r *http.Request) {
+	todos, err := models.GetAllTodos()
+	if err != nil {
+		log.Printf("Erro ao obter registros: %v", err)
+	}
+
+	w.Header().Add("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(todos)
+}
