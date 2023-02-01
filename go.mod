@@ -3,6 +3,7 @@ module github.com/diogo-braz/go-api-postgresql
 go 1.19
 
 require (
+	github.com/go-chi/chi v1.5.4
 	github.com/lib/pq v1.10.7
 	github.com/spf13/viper v1.15.0
 )
