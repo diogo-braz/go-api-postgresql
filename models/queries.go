@@ -16,3 +16,16 @@ func InsertTodo(todo Todo) (id int64, err error) {
 
 	return
 }
+
+func GetTodo(id int64) (todo Todo, err error) {
+	conn, err := database.OpenConnection()
+	if err != nil {
+		return
+	}
+	defer conn.Close()
+
+	row := conn.QueryRow(`SELECT id, title, description, done FROM todos WHERE id = $1`, id)
+	err = row.Scan(&todo.ID, &todo.Title, &todo.Description, &todo.Done)
+
+	return
+}
