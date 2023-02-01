@@ -71,3 +71,18 @@ func UpdateTodo(id int64, todo Todo) (int64, error) {
 
 	return res.RowsAffected()
 }
+
+func DeleteTodo(id int64) (int64, error) {
+	conn, err := database.OpenConnection()
+	if err != nil {
+		return 0, err
+	}
+	defer conn.Close()
+
+	res, err := conn.Exec(`DELETE FROM todos WHERE id = $1`, id)
+	if err != nil {
+		return 0, err
+	}
+
+	return res.RowsAffected()
+}
