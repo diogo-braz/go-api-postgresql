@@ -1,0 +1,8 @@
+[api]
+port = ""
+
+[database]
+hostname=""
+user=""
+password=""
+database=""
